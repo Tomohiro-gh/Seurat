@@ -1,8 +1,8 @@
 # Seurat
 Seuratのエラーなどメモしておく
 
+### ロードしたオブジェクトのエラー
 ```r
-## error message
 ## Error: Please run UpdateSeuratObject on your object
 ## Error during wrapup: no slot of name "images" for this object of class "Seurat"
 ## Error: no more error handlers available (recursive errors?); invoking 'abort' restart
