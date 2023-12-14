@@ -1,6 +1,15 @@
 # Seurat
 Seuratのエラーなどメモしておく
 
+version管理
+### check version of seurat
+```r
+## check suerat version
+packageVersion("Seurat")
+## checke object version
+Version(pbmc_small)
+```
+
 ### ロードしたオブジェクトのエラー
 ```r
 ## Error: Please run UpdateSeuratObject on your object
