@@ -1,8 +1,14 @@
 # Seurat
-Seuratのエラーなどメモしておく
+### Seuratのエラーなどメモしておく
 
-version管理
-### check version of seurat
+## Install
+```r
+remotes::install_github("satijalab/seurat", "seurat5", quiet = TRUE)
+```
+
+
+## version管理
+#### check version of seurat
 ```r
 ## check suerat version
 packageVersion("Seurat")
@@ -10,7 +16,7 @@ packageVersion("Seurat")
 Version(pbmc_small)
 ```
 
-### ロードしたオブジェクトのエラー
+## ロードしたオブジェクトのエラー
 ```r
 ## Error: Please run UpdateSeuratObject on your object
 ## Error during wrapup: no slot of name "images" for this object of class "Seurat"
