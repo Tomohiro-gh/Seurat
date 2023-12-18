@@ -28,3 +28,27 @@ https://github.com/satijalab/seurat/issues/4515
 ```r
   seurat_obj <- UpdateSeuratObject(seurat_obj)
 ```
+
+
+## metadataの追加：既存のmetaを参考にして新たに追加するversion
+```r
+ECatlasQC@meta.data <- 
+  ECatlasQC@meta.data %>% 
+  mutate(rough_annotation =
+           case_when(Cluster %in% A ~ 'Artery',
+                     Cluster %in% V ~ 'Vein',
+                     Cluster %in% C ~ 'Capillary',
+                     Cluster %in% M ~ 'Mitotic',
+                     Cluster %in% An ~ 'Angiogenic',
+                     Cluster %in% L ~ 'Lymphatic'))
+
+
+#また，一部のみを変更し，以下は同様としたい場合は， # TRUE ~ で指定する
+SeuratObj@metadata <-
+  SeuratObj@metadata %>% 
+  mutate(
+    Modified_MCannotation =
+      case_when(rownames(AnnotationData) %in% Barcode_SMC ~ 'SMC',
+                TRUE ~ Author_Annotation))
+
+```
