@@ -1,7 +1,7 @@
 ## clusterごと，異なるステージのサンプルのDEGをそれぞれ比較し， excel にまとめていく
 
 clusterlist <- c("Celltype1", "Celltype2", "Celltype3", "Celltype4", "Celltype5")
-stage <- c("Day0", "Day1", "Day3", "Day7")
+Stage <- c("Day0", "Day1", "Day3", "Day7")
 
 
 fun.DEgenes <- function(object, cluster, name){
@@ -9,13 +9,13 @@ fun.DEgenes <- function(object, cluster, name){
   Idents(object) <- "CellType_x_stage" ## すでにidentとしてあるものを指定
   #Cluster x stageでのobjectをそれぞれ作る
   group <- NULL #最初に作っておかないとエラーが出る
-    for(i in 1:length(Ages)){
-      group[i] <- paste(cluster, Ages[i], sep="_")
+    for(i in 1:length(Stage)){
+      group[i] <- paste(cluster, Stage[i], sep="_")
       }
   print(group)
   workbook <- createWorkbook()
   
-  # Ident.2にcotrol(young) をおく -> logFCはident.2に対する発現の割合
+  # Day0を元に 他のstageのDEGを解析する．
   for(j in 1:(length(group)-1)){
     
     DE <- FindMarkers(object,
@@ -32,7 +32,7 @@ fun.DEgenes <- function(object, cluster, name){
       ))
     
     #シートへ保存：追加OK    
-    sName = paste(Ages[1], "vs", Ages[j+1], sep="")
+    sName = paste(Stage[1], "vs", Stage[j+1], sep="")
     addWorksheet(workbook, sheetName = sName)
     writeData(workbook, sheet = sName, x = DEgenes, rowNames = TRUE)
     saveWorkbook(workbook, 
