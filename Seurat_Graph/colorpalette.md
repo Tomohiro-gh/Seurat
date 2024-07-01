@@ -1,6 +1,5 @@
 ## Seuratで作成したcluster colorを使用する
 
-## Cluster colorの設定
 ```r
 ## 確認と設定
 Idents(seu_obj) <- "CellTypeAnnotation"
